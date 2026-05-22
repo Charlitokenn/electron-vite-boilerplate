@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 import { CircleCheckIcon, XIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@renderer/components/ui/button"
 
 import {
   Toast,
@@ -10,7 +10,7 @@ import {
   ToastClose,
   ToastDescription,
   ToastTitle,
-} from "@/components/ui/toast"
+} from "@renderer/components/ui/toast"
 
 interface CustomToastItemProps {
   title: string

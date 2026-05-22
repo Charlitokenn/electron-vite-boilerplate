@@ -3,9 +3,9 @@
 import type * as React from 'react'
 import { Link } from 'react-router'
 import { X, Check, Trash2, FileText, Calendar } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from '@renderer/components/ui/avatar'
+import { Button } from '@renderer/components/ui/button'
+import { cn } from '@renderer/lib/utils'
 
 export type NotificationType = 'user' | 'document' | 'calendar'
 

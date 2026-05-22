@@ -12,10 +12,10 @@ import {
 import { parseAsStringEnum, useQueryState } from "nuqs";
 import * as React from "react";
 
-import { DataTableRangeFilter } from "@/components/data-table/data-table-range-filter";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { DataTableRangeFilter } from "@renderer/components/data-table/data-table-range-filter";
+import { Badge } from "@renderer/components/ui/badge";
+import { Button } from "@renderer/components/ui/button";
+import { Calendar } from "@renderer/components/ui/calendar";
 import {
   Command,
   CommandEmpty,
@@ -23,7 +23,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
+} from "@renderer/components/ui/command";
 import {
   Faceted,
   FacetedBadgeList,
@@ -34,39 +34,39 @@ import {
   FacetedItem,
   FacetedList,
   FacetedTrigger,
-} from "@/components/ui/faceted";
-import { Input } from "@/components/ui/input";
+} from "@renderer/components/ui/faceted";
+import { Input } from "@renderer/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@renderer/components/ui/popover";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@renderer/components/ui/select";
 import {
   Sortable,
   SortableContent,
   SortableItem,
   SortableItemHandle,
   SortableOverlay,
-} from "@/components/ui/sortable";
-import { useDebouncedCallback } from "@/hooks/use-debounced-callback";
-import { getDefaultFilterOperator, getFilterOperators } from "@/lib/data-table";
-import { formatDate } from "@/lib/format";
-import { generateId } from "@/lib/id";
-import { getFiltersStateParser } from "@/lib/parsers";
-import { cn } from "@/lib/utils";
+} from "@renderer/components/ui/sortable";
+import { useDebouncedCallback } from "@renderer/hooks/use-debounced-callback";
+import { getDefaultFilterOperator, getFilterOperators } from "@renderer/lib/data-table";
+import { formatDate } from "@renderer/lib/format";
+import { generateId } from "@renderer/lib/id";
+import { getFiltersStateParser } from "@renderer/lib/parsers";
+import { cn } from "@renderer/lib/utils";
 import type {
   ExtendedColumnFilter,
   FilterOperator,
   JoinOperator,
 } from "@/types/data-table";
-import { dataTableConfig } from "@/lib/config/data-table";
+import { dataTableConfig } from "@renderer/lib/config/data-table";
 
 const DEBOUNCE_MS = 300;
 const THROTTLE_MS = 50;

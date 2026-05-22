@@ -1,4 +1,4 @@
-import { OrbitingCircles } from '@/components/ui/orbiting-circles'
+import { OrbitingCircles } from '@renderer/components/ui/orbiting-circles'
 
 export function OrbitingIcons() {
   return (

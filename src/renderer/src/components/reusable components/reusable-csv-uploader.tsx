@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@renderer/components/ui/button";
+import { Badge } from "@renderer/components/ui/badge";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@renderer/components/ui/select";
 import {
   Table,
   TableBody,
@@ -18,9 +18,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Separator } from "@/components/ui/separator";
-import { cn, addSpacesBeforeCapitals } from "@/lib/utils";
+} from "@renderer/components/ui/table";
+import { Separator } from "@renderer/components/ui/separator";
+import { cn, addSpacesBeforeCapitals } from "@renderer/lib/utils";
 import { AlertCircle, Loader2 } from "lucide-react";
 import { CSVIcon } from "../icons";
 

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { smsBalanceManager } from '@/lib/utils'
+import { smsBalanceManager } from '@renderer/lib/utils'
 
 export function useSmsBalance(userId: string | undefined) {
   return useQuery({

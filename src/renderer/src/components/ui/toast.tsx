@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { XIcon } from "lucide-react"
 import { Toast as ToastPrimitives } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@renderer/lib/utils"
 
 const ToastProvider = ToastPrimitives.Provider
 

@@ -1,6 +1,6 @@
-import { AppSidebar } from '@/components/app-sidebar'
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import { Separator } from '@/components/ui/separator'
+import { AppSidebar } from '@renderer/components/app-sidebar'
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@renderer/components/ui/sidebar'
+import { Separator } from '@renderer/components/ui/separator'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,9 +9,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
-import { ModeToggle } from '@/components/mode-toggle'
+import { ModeToggle } from '@renderer/components/mode-toggle'
 import React from 'react'
-import { SIDEBAR_DATA, APP_DETAILS } from '@/lib/constants'
+import { SIDEBAR_DATA, APP_DETAILS } from '@renderer/lib/constants'
 import { HeartIcon } from 'lucide-react'
 import { Outlet, useLocation } from 'react-router'
 

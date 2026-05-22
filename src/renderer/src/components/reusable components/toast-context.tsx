@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useContext, useState, useCallback, ReactNode } from 'react'
-import { ToastProvider, ToastViewport } from "@/components/ui/toast"
+import { ToastProvider, ToastViewport } from "@renderer/components/ui/toast"
 import CustomToast from './custom-toast'
 
 

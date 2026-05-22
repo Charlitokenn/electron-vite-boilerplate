@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@renderer/components/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -6,8 +6,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { cn } from "@/lib/utils";
+} from "@renderer/components/ui/table";
+import { cn } from "@renderer/lib/utils";
 
 interface DataTableSkeletonProps extends React.ComponentProps<"div"> {
   columnCount: number;

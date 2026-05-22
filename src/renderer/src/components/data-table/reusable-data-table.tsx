@@ -5,22 +5,22 @@
 import type { ColumnDef, Table } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import * as React from "react";
-import { DataTable } from "@/components/data-table/data-table";
-import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
-import { DataTableToolbar } from "@/components/data-table/data-table-toolbar";
-import { DataTableAdvancedToolbar } from "@/components/data-table/data-table-advanced-toolbar";
-import { DataTableFilterList } from "@/components/data-table/data-table-filter-list";
-import { DataTableSortList } from "@/components/data-table/data-table-sort-list";
-import { DataTableActionBar } from "@/components/data-table/data-table-action-bar";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { DataTable } from "@renderer/components/data-table/data-table";
+import { DataTableColumnHeader } from "@renderer/components/data-table/data-table-column-header";
+import { DataTableToolbar } from "@renderer/components/data-table/data-table-toolbar";
+import { DataTableAdvancedToolbar } from "@renderer/components/data-table/data-table-advanced-toolbar";
+import { DataTableFilterList } from "@renderer/components/data-table/data-table-filter-list";
+import { DataTableSortList } from "@renderer/components/data-table/data-table-sort-list";
+import { DataTableActionBar } from "@renderer/components/data-table/data-table-action-bar";
+import { Button } from "@renderer/components/ui/button";
+import { Checkbox } from "@renderer/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useDataTable } from "@/hooks/use-data-table";
+} from "@renderer/components/ui/dropdown-menu";
+import { useDataTable } from "@renderer/hooks/use-data-table";
 
 /**
  * Configuration options for the reusable data table
@@ -29,10 +29,10 @@ export interface ReusableDataTableConfig<TData> {
   // Core data
   data: TData[];
   columns: ColumnDef<TData>[];
-  
+
   // Pagination
   pageCount?: number;
-  
+
   // Table state
   initialState?: {
     sorting?: Array<{ id: Extract<keyof TData, string>; desc: boolean }>;
@@ -40,25 +40,25 @@ export interface ReusableDataTableConfig<TData> {
     columnPinning?: { left?: string[]; right?: string[] };
     columnVisibility?: Record<string, boolean>;
   };
-  
+
   // Row identification
   getRowId?: (row: TData) => string;
-  
+
   // Selection
   enableRowSelection?: boolean | ((row: TData) => boolean);
   enableMultiRowSelection?: boolean;
-  
+
   // Actions
   rowActions?: (row: TData) => React.ReactNode;
   bulkActions?: (table: Table<TData>) => React.ReactNode;
-  
+
   // Toolbar
   toolbarVariant?: "standard" | "advanced";
   enableFiltering?: boolean;
   enableSorting?: boolean;
   enableViewOptions?: boolean;
   toolbarSlot?: React.ReactNode;
-  
+
   // Callbacks
   onRowClick?: (row: TData) => void;
   onRowsSelected?: (rows: TData[]) => void;
@@ -104,12 +104,12 @@ export function createActionsColumn<TData>(
     id: "actions",
     cell: ({ row }) => {
       const actions = renderActions(row.original);
-      
+
       // If custom actions are provided, use them
       if (actions) {
         return actions;
       }
-      
+
       // Default actions dropdown
       return (
         <DropdownMenu>
@@ -135,7 +135,7 @@ export function createActionsColumn<TData>(
 
 /**
  * Reusable Data Table Component
- * 
+ *
  * A comprehensive, feature-rich data table with:
  * - Row selection (single/multi)
  * - Advanced filtering and sorting
@@ -143,7 +143,7 @@ export function createActionsColumn<TData>(
  * - Pagination
  * - Row actions and bulk actions
  * - Customizable toolbar
- * 
+ *
  * @example
  * ```tsx
  * <ReusableDataTable
@@ -177,20 +177,20 @@ export function ReusableDataTable<TData extends Record<string, any>>({
   // Build columns with optional selection and actions
   const columns = React.useMemo<ColumnDef<TData>[]>(() => {
     const cols: ColumnDef<TData>[] = [];
-    
+
     // Add selection column if enabled
     if (enableRowSelection) {
       cols.push(createSelectionColumn<TData>());
     }
-    
+
     // Add base columns
     cols.push(...baseColumns);
-    
+
     // Add actions column if provided
     if (rowActions) {
       cols.push(createActionsColumn<TData>(rowActions));
     }
-    
+
     return cols;
   }, [baseColumns, enableRowSelection, rowActions]);
 
@@ -233,7 +233,7 @@ export function ReusableDataTable<TData extends Record<string, any>>({
         </DataTableAdvancedToolbar>
       );
     }
-    
+
     return (
       <DataTableToolbar table={table}>
         {enableSorting && <DataTableSortList table={table} />}
@@ -245,7 +245,7 @@ export function ReusableDataTable<TData extends Record<string, any>>({
   // Render action bar if bulk actions are provided
   const renderActionBar = () => {
     if (!bulkActions || !enableRowSelection) return undefined;
-    
+
     return (
       <DataTableActionBar table={table}>
         {bulkActions(table)}
@@ -304,9 +304,9 @@ export function createDataTableColumns<TData>() {
       id: string;
       accessorKey: keyof TData;
       header: string;
-      options: Array<{ 
-        label: string; 
-        value: string; 
+      options: Array<{
+        label: string;
+        value: string;
         icon?: React.FC<React.SVGProps<SVGSVGElement>>;
       }>;
       cell?: (value: any) => React.ReactNode;

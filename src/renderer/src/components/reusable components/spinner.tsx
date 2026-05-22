@@ -1,4 +1,4 @@
-import { Spinner } from '@/components/spinner'
+import { Spinner } from '@renderer/components/spinner'
 
 
 const Loader = () => <div className='flex items-center justify-center h-full w-full'>
