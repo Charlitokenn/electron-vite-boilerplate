@@ -1,12 +1,12 @@
-import { ThemeProvider } from 'next-themes'
 import { ToastContextProvider } from '@renderer/components/reusable components/toast-context'
 import { TooltipProvider } from '@renderer/components/ui/tooltip'
-
+import { shadcn } from '@clerk/ui/themes'
 import { ClerkProvider } from '@clerk/react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { AppConfig } from '@renderer/config'
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v7'
+import { ThemeProvider } from '@renderer/components/theme-provider'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -27,14 +27,11 @@ export default function RootLayout() {
       publishableKey={PUBLISHABLE_KEY}
       routerPush={(to) => navigate(to)}
       routerReplace={(to) => navigate(to, { replace: true })}
+      appearance={{
+        theme: shadcn,
+      }}
     >
-      {/*<ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">*/}
-      <ThemeProvider
-        attribute="class"
-        storageKey="vite-ui-theme"
-        defaultTheme="light"
-        disableTransitionOnChange
-      >
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <NuqsAdapter>
           <ToastContextProvider>
             <TooltipProvider>

@@ -37,7 +37,10 @@ const AppShell = (): React.ReactElement => {
           <div className="flex w-full items-center justify-between pr-5 border-b py-2">
             <div className="flex items-center gap-2 px-4 ">
               <SidebarTrigger className="-ml-1 bg-muted cursor-pointer" />
-              <Separator orientation="vertical" className="mr-2 mt-1 data-[orientation=vertical]:h-4" />
+              <Separator
+                orientation="vertical"
+                className="mr-2 mt-1 data-[orientation=vertical]:h-4"
+              />
               <Breadcrumb>
                 <BreadcrumbList>
                   {/* Home icon — always present, links back to / */}
@@ -72,15 +75,16 @@ const AppShell = (): React.ReactElement => {
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-            <ModeToggle />
-            <UserButton />
+            <div className="gap-0 flex items-center justify-center">
+              <ModeToggle />
+              <UserButton />
+            </div>
           </div>
         </header>
 
         <main className="flex-1 overflow-auto p-4">
           <Outlet />
         </main>
-
       </SidebarInset>
     </SidebarProvider>
   )
