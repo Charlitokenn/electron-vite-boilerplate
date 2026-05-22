@@ -1,14 +1,14 @@
 "use client";
 
 import ReusableSheet from "../reusable components/reusable-sheet";
-import {FilesIcon, Moon, Plus, Sun, Sunrise, Sunset} from "lucide-react";
+import {FilesIcon, Moon, Plus, Sun, Sunset} from "lucide-react";
 import ReusableTooltip from "../reusable components/reusable-tooltip";
 import {DayCloudyIcon} from "@/components/icons";
 import React, {JSX} from "react";
 
 type PageHeroProps = {
   title?: string;
-  subtitle: string;
+  subtitle?: string;
   type: "greeting" | "hero";
   buttonText?: string;
   showButton?: boolean;

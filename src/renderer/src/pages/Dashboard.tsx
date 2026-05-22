@@ -1,12 +1,19 @@
 import { JSX } from 'react'
+import PageHero from '@renderer/components/ui/pageHero'
+import { useUser } from '@clerk/react'
+import { getPersonalizedGreeting } from '@renderer/lib/utils'
 
 export const Dashboard = (): JSX.Element => {
+  const { user } = useUser()
+  const greeting = getPersonalizedGreeting(user?.firstName)
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-      Dashboard
-    </div>
+    <section className="py-2">
+      <PageHero
+        type={'greeting'}
+        title={greeting}
+      />
+    </section>
   )
 }
 
 export default Dashboard
-
