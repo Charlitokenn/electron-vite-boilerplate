@@ -4,7 +4,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs"
+} from "@renderer/components/ui/tabs"
 
 export interface VerticalTabItem {
   value: string;

@@ -8,10 +8,7 @@ export const Dashboard = (): JSX.Element => {
   const greeting = getPersonalizedGreeting(user?.firstName)
   return (
     <section className="py-2">
-      <PageHero
-        type={'greeting'}
-        title={greeting}
-      />
+      <PageHero type={'greeting'} title={greeting} />
     </section>
   )
 }

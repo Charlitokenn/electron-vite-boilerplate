@@ -7,7 +7,7 @@ import {
   DialogPopup,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@renderer/components/ui/dialog"
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 
@@ -31,10 +31,10 @@ const ReusableDialog = ({ trigger, title, description, dialog,hideDialogFooter =
       <div className="px-6">
         {dialog}
       </div>
-      
+
     <DialogFooter hidden={hideDialogFooter}>
       <DialogClose render={<Button variant="ghost" />}>Close</DialogClose>
-    </DialogFooter>    
+    </DialogFooter>
   </DialogPopup>
 </Dialog>
 )
