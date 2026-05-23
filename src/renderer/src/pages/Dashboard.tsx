@@ -6,6 +6,7 @@ import { getPersonalizedGreeting } from '@renderer/lib/utils'
 export const Dashboard = (): JSX.Element => {
   const { user } = useUser()
   const greeting = getPersonalizedGreeting(user?.firstName)
+  
   return (
     <section className="py-2">
       <PageHero type={'greeting'} title={greeting} />

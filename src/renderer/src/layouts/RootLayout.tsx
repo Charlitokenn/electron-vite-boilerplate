@@ -28,7 +28,7 @@ export default function RootLayout() {
       routerPush={(to) => navigate(to)}
       routerReplace={(to) => navigate(to, { replace: true })}
       appearance={{
-        theme: shadcn,
+        theme: shadcn
       }}
     >
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
