@@ -45,7 +45,7 @@ const AppShell = (): React.ReactElement => {
                 <BreadcrumbList>
                   {/* Home icon — always present, links back to / */}
                   <BreadcrumbItem>
-                    <BreadcrumbLink>
+                    <BreadcrumbLink asChild>
                       <Link to="/" aria-label="Home">
                         <Home className="size-4" />
                       </Link>
@@ -64,7 +64,7 @@ const AppShell = (): React.ReactElement => {
                             {isLast ? (
                               <BreadcrumbPage>{crumb.handle.label}</BreadcrumbPage>
                             ) : (
-                              <BreadcrumbLink>
+                              <BreadcrumbLink asChild>
                                 <Link to={crumb.pathname}>{crumb.handle.label}</Link>
                               </BreadcrumbLink>
                             )}

@@ -1,22 +1,16 @@
-import * as React from 'react'
+// Drop this into your AppShell header / sidebar header.
+// The status dot reflects the Supabase binding state during org switches.
 
-import { NavMain } from '@renderer/components/nav-main'
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-  useSidebar
-} from '@renderer/components/ui/sidebar'
-import { OrganizationSwitcher} from '@clerk/react'
-import { APP_ROUTES } from '@renderer/config'
+import { OrganizationSwitcher, useOrganization } from '@clerk/react'
+import { useSupabase } from '@renderer/contexts/SupabaseContext'
+import { ROUTES } from '@renderer/config'
 import { useEffect, useMemo, useState } from 'react'
+import { useSidebar } from '@renderer/components/ui/sidebar'
 
-const SIDEBAR_ROUTES = APP_ROUTES.filter((route) => route.showInSidebar)
+export function AppOrgSwitcher() {
+  const { organization } = useOrganization()
+  const { status } = useSupabase()
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar()
   const isCollapsed = state === 'collapsed'
   const [showText, setShowText] = useState(state === 'expanded')
@@ -79,21 +73,37 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   }, [state])
 
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <div
-          onClick={(e) => isCollapsed && e.stopPropagation()}
-          style={{ pointerEvents: isCollapsed ? 'none' : 'auto' }}
-        >
-          <OrganizationSwitcher hidePersonal appearance={organizationAppearance} />
-          {/*<AppOrgSwitcher/>*/}
-        </div>
-      </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={SIDEBAR_ROUTES} />
-      </SidebarContent>
-      <SidebarFooter/>
-      <SidebarRail />
-    </Sidebar>
+    <div className="flex items-center gap-2">
+      <OrganizationSwitcher
+        hidePersonal
+        afterSelectOrganizationUrl={ROUTES.dashboard}
+        afterLeaveOrganizationUrl={ROUTES.orgSelect}
+        afterCreateOrganizationUrl={ROUTES.dashboard}
+        appearance={organizationAppearance}
+      />
+
+      {/*
+        Status dot — visible feedback while credentials are re-fetched
+        after an org switch. Disappears once binding is ready.
+      */}
+      {status === 'loading' && (
+        <span
+          className="h-2 w-2 animate-pulse rounded-full bg-amber-400"
+          title="Connecting to workspace…"
+        />
+      )}
+      {status === 'ready' && (
+        <span
+          className="h-2 w-2 rounded-full bg-emerald-400"
+          title={`Connected: ${organization?.name}`}
+        />
+      )}
+      {status === 'error' && (
+        <span
+          className="h-2 w-2 rounded-full bg-destructive"
+          title="Connection error — check settings"
+        />
+      )}
+    </div>
   )
 }
