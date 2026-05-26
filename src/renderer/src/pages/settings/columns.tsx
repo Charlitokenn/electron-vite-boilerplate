@@ -32,7 +32,7 @@ export function RecordsPage() {
     // ── 2. Realtime channel ─────────────────────────────────────────────────
     // One channel handles all three event types — pick what you need.
     const channel = supabase
-      .channel('records-live')   // channel name — unique per page/feature
+      .channel('records-live') // channel name — unique per page/feature
 
       // ── Postgres Changes ─────────────────────────────────────────────────
       // Fires when rows are inserted/updated/deleted in your database.
@@ -40,7 +40,7 @@ export function RecordsPage() {
       // Database → Replication → supabase_realtime publication → your table
       .on(
         'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'records' },
+        { event: 'INSERT', schema: 'public', table: 'Test Data' },
         (payload) => {
           if (cancelled) return
           setRecords((prev) => [payload.new as Record, ...prev])
@@ -48,7 +48,7 @@ export function RecordsPage() {
       )
       .on(
         'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'records' },
+        { event: 'UPDATE', schema: 'public', table: 'Test Data' },
         (payload) => {
           if (cancelled) return
           setRecords((prev) =>
@@ -58,7 +58,7 @@ export function RecordsPage() {
       )
       .on(
         'postgres_changes',
-        { event: 'DELETE', schema: 'public', table: 'records' },
+        { event: 'DELETE', schema: 'public', table: 'Test Data' },
         (payload) => {
           if (cancelled) return
           setRecords((prev) => prev.filter((r) => r.id !== payload.old.id))
@@ -71,7 +71,7 @@ export function RecordsPage() {
       // Any client subscribed to this channel and event receives the message.
       .on(
         'broadcast',
-        { event: 'record-updated' },         // ← your custom event name
+        { event: 'record-updated' }, // ← your custom event name
         (payload) => {
           if (cancelled) return
           console.log('[Broadcast] record-updated received:', payload)

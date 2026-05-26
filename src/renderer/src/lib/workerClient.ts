@@ -2,7 +2,7 @@ const WORKER_URL = import.meta.env.VITE_WORKER_URL as string
 
 if (!WORKER_URL) {
   throw new Error(
-    '[workerClient] VITE_WORKER_URL is not defined. Add it to your .env file and restart the dev server.'
+    '[workerClient] VITE_WORKER_URL is not defined. Add it to your .env.local file and restart the dev server.'
   )
 }
 

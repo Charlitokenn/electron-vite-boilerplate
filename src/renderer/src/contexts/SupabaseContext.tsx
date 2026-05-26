@@ -70,12 +70,11 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
   // ── Initialize / re-initialize ────────────────────────────────────────────
   const initializeBinding = useCallback(async () => {
 
-    const sess = await getToken({ skipCache: true })
-    const payload = sess ? JSON.parse(atob(sess.split('.')[1])) : null
-    console.log('[DEBUG] JWT payload:', payload)
-    console.log('[DEBUG] org_id in token:', payload?.o.id)
-    console.log('[DEBUG] orgId from hook:', orgId)
-
+    // const sess = await getToken({ skipCache: true })
+    // const payload = sess ? JSON.parse(atob(sess.split('.')[1])) : null
+    // console.log('[DEBUG] JWT payload:', payload)
+    // console.log('[DEBUG] org_id in token:', payload?.o.id)
+    // console.log('[DEBUG] orgId from hook:', orgId)
 
     if (!isSignedIn || !orgId) {
       await teardownClient()

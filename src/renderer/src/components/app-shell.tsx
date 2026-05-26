@@ -15,6 +15,7 @@ import React from 'react'
 import { RouteHandle } from '@renderer/router/router-types'
 import { Home } from 'lucide-react'
 import { ModeToggle } from '@renderer/components/mode-toggle'
+import CountUp from '@renderer/components/CountUp.jsx'
 
 /**
  * Breadcrumbs are derived from the `handle` property attached to each route
@@ -75,7 +76,8 @@ const AppShell = (): React.ReactElement => {
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-            <div className="gap-0 flex items-center justify-center">
+            <div className="flex items-center justify-center">
+              <span className="text-xs font-medium mr-4">SMS Balance: <CountUp to={2909} separator={","} duration={2} onStart={undefined} onEnd={undefined} /></span>
               <ModeToggle />
               <UserButton />
             </div>
