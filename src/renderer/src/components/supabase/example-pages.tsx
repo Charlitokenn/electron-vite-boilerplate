@@ -19,7 +19,7 @@ export function PropertiesPage() {
   const { data: properties, loading, error } = useSupabaseTable<Property>(
     'properties',             // table name
     'id',                     // primary key
-    (q) => q.order('created_at', { ascending: false })
+    (query) => query.order('created_at', { ascending: false })
   )
 
   if (loading) return <p className="text-sm text-muted-foreground">Loading...</p>
